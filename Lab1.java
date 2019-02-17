@@ -15,20 +15,20 @@ public class Lab1 {
     long[] unicodeArray = new long[65536];
     byte[] buf = new byte[4096];
     int a;
-    short maxChar = 0;
-    long maxCharCnt = 0;
+    short minChar = 0;
+    long minCharCnt = 0;
 
     while ((a = reader.read(buf)) > 0) {
         for (int i = 0; i < a; i += 2) {
             short c = (short) ((buf[i] << 8) | (buf[i + 1] & 0xff));
             unicodeArray[c]++;
-            if (unicodeArray[c] > maxCharCnt) {
-                maxChar = c;
-                maxCharCnt = unicodeArray[c];
+            if (unicodeArray[c] > minCharCnt) {
+                minChar = c;
+                minCharCnt = unicodeArray[c];
         }
     }
 
-    System.out.println((char)maxChar);
+    System.out.println((char)minChar);
 }
           }
           
